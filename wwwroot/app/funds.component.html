@@ -1,0 +1,27 @@
+
+<div class="container">
+  <h2>My Funds</h2>
+  <ul class="funds">
+    <li *ngFor="let fund of funds | orderby : ['name']" (click)="onSelect(fund)" [class.selected]="fund === selectedFund">
+      <button class="delete-button" (click)="deleteFund(fund, $event)">Delete</button>
+      <span class="fund-element">
+        {{fund.name}}
+      </span>
+    </li>
+  </ul>
+
+  <div class="error" *ngIf="error">{{error}}</div>
+  <button (click)="addFund()">Add New Fund</button>
+  <div *ngIf="addingFund">
+    <my-fund-detail (close)="close($event)"></my-fund-detail>
+  </div>
+
+  <div *ngIf="selectedFund">
+    <h2>
+      Selected fund: {{selectedFund.name | uppercase}}
+    </h2>
+    <button (click)="gotoFundDetail()">View Details</button>
+  </div>
+
+
+  

@@ -1,0 +1,57 @@
+ <div class="container text-center">
+    <div class="row">
+      <h4>Car Show</h4> <br>
+      <!-- <span class="text-danger"> The selected page<span class="badge">{{currentSelectedPage}}</span> </span> <br>
+      <span class="text-danger"> Totoal items per page<span class="badge">{{currentItemsPerPage}}</span> </span> <br> -->
+
+      <div class="form-group">
+        <img [src]="slides[currentPage-1].image" style="margin:auto; width: 80%; max-width: 1800px;">
+      </div>
+      <div class="form-group">
+            <pagination [boundaryLinks]="true" [totalItems]="totalResults"
+                [(ngModel)]="currentPage" (pageChanged)="currentPageChanged($event)"
+                [maxSize]="maxSize"
+            ></pagination>
+            <br>
+            <!-- <button type="button" class="btn btn-info" (click)="setCurrentPage(2)">Set the current page <span class="badge">to: 2</span></button> <br>
+            <br>-->
+      </div>
+     
+      <!-- <div class="form-group" style="float: center s">
+        <h4>Car Show Pager</h4>
+        <pager [totalItems]="totalResults" [(ngModel)]="currentPage" onPageChanged="currentPageChanged($event)"></pager>
+      </div>
+      -->
+  </div>
+</div> 
+
+<hr> 
+<div class="container text-center">
+     <patient-search></patient-search>
+
+    <div class="grid grid-pad">
+      <div *ngFor="let patient of patients" (click)="gotoDetail(patient)" class="col-md-3 btn btn-primary4">
+        <div class="row">
+          <div class="module patient">
+            <h4>{{patient.name}}</h4>
+          </div>
+        </div>
+       </div>
+    </div>
+  </div>
+
+<hr>
+<div class="container  text-center">
+  <fund-search></fund-search>
+  <div class="grid grid-pad">
+      <div *ngFor="let fund of funds" (click)="gotoFundDetail(fund)" class="col-md-6 btn btn-primary">
+        <div class="row">
+        <div class="module fund">
+          <h4>{{fund.name}}</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

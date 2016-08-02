@@ -1,0 +1,26 @@
+
+
+<div class="container">
+  <h2>Customers</h2>
+  <ul class="patients">
+    <li *ngFor="let patient of patients | orderby : ['name']" (click)="onSelect(patient)" [class.selected]="patient === selectedPatient">
+      <span class="patient-element">
+        <span class="badge">{{patient.id}}</span> {{patient.name}}
+      </span>
+      <!-- <button class="delete-button" (click)="deletePatient(patient, $event)">Delete</button> -->
+    </li>
+  </ul>
+
+  <div class="error" *ngIf="error">{{error}}</div>
+  <button (click)="addPatient()">Add New Customer</button>
+  <div *ngIf="addingPatient">
+    <my-patient-detail (close)="close($event)"></my-patient-detail>
+  </div>
+
+  <div *ngIf="selectedPatient">
+    <h2>
+      {{selectedPatient.name | uppercase}} is my customer
+    </h2>
+    <button (click)="gotoDetail()">View Details</button>
+  </div>
+</div>

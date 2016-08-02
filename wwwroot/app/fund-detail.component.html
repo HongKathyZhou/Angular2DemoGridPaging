@@ -1,0 +1,17 @@
+<div *ngIf="fund">
+  <div class="container">
+    <h2>{{fund.name}} details!</h2>
+    <div>
+      <label>id: </label>{{fund.id}}</div>
+    <div>
+      <label>name: </label>
+      <input [(ngModel)]="fund.name" placeholder="name"/>
+    </div>
+    <!-- <div>
+      <label>ticker: </label>
+      <input [(ngModel)]="fund.ticker" placeholder="ticker" />
+    </div> -->
+    <button (click)="goBack()">Back</button>
+    <button (click)="save()">Save</button>
+  </div>
+</div>
